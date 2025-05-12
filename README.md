@@ -2,4 +2,5 @@
 Trabajo Práctico N° 4 React – Hooks - Eventos
 
 # INTEGRANTES:
-Coronel, Walter Eduardo - usuario: waltopo
+Coronel, Walter Eduardo - usuario: waltop
+Ortiz, Lucas Maximiliano - usuario: lucasortiz512

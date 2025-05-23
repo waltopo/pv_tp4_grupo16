@@ -3,6 +3,7 @@ import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
 import ProductForm from './components/ProductForm';
+import ProductList from './components/ProductList';
 
 function App() {
 
@@ -26,9 +27,21 @@ function App() {
       );
   },[]);
 
+
   const handleEditarProducto = useCallback((product) => {
     setEditarProducto(product);
   }, []);
+
+  const handleBorrarProducto = useCallback((id) => {
+    setProductos(productos => productos.filter(p => p.id !== id));
+  }, []);
+
+  const buscarProductos = useMemo(() => {
+    return productos.filter(p =>
+      p.descripcion.toLowerCase().includes(buscar.toLowerCase()) ||
+      p.id.toString().includes(buscar)
+    );
+  }, [productos, buscar]);
 
   return (
     <>
@@ -37,7 +50,12 @@ function App() {
         <ProductForm 
         onAgregar={handelAgregarProducto}
         onAct={handelActProducto}     
-        editarProducto={handleEditarProducto} 
+        editarProducto={editarProducto} 
+        />
+        <ProductList
+          productos={buscarProductos}
+          onEliminar={handleBorrarProducto}
+          onEditar={handleEditarProducto}
         />
       </div>
     </>

@@ -28,6 +28,7 @@ function App() {
     setProductos(productos=>
       productos.map(p => (p.id === productoAct.id ? productoAct: p))
       );
+      setEditarProducto(null);
   },[]);
 
 

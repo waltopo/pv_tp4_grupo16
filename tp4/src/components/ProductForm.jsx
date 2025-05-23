@@ -19,12 +19,13 @@ const ProductForm = ({editarProducto, onAct, onAgregar})=>{
         }else{
             setProducto(crearProducto);
         }
-    }),[editarProducto];
+    },[editarProducto]);
     
     const handelChange = (e)=>{
         const {name, value} = e.target;
         setProducto(productos => ({
-            ...productos,[name]:name === 'descripcion' ? value : Number(value)
+            ...productos,
+            [name]:name === 'descripcion' ? value : Number(value)
         }));
     };
     
@@ -32,7 +33,7 @@ const ProductForm = ({editarProducto, onAct, onAgregar})=>{
     const handelSubmit = (e)=>{
         e.preventDefault();
         const precioConDescuento = producto.precioUnitario * (1-producto.descuento/100);
-        const product = { ...producto, precioConDescuento};
+        const product = { ...producto, precioConDescuento: +precioConDescuento.toFixed(2)};
         
         if(editarProducto){
             onAct(product);

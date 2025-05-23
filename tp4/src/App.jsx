@@ -1,13 +1,14 @@
 import React,{ useCallback, useState,useMemo } from 'react';
 import ProductForm from './components/ProductForm';
 import ProductList from './components/ProductList';
+import SearchBar from './components/SearchBar';
 import './App.css'
 
 function App() {
 
   const[productos, setProductos] = useState([]);
   const[editarProducto, setEditarProducto]=useState(null);
-
+  const[buscar,setBuscar]=useState('');
   
   const handelAgregarProducto = useCallback((product)=>{
     setProductos(productos =>{
@@ -44,6 +45,7 @@ function App() {
   return (
       <div className="Contenedor">
         <h1>Gestion de Productos</h1>
+        <SearchBar buscar={buscar} setBuscar={setBuscar} />
         <ProductForm 
           onAgregar={handelAgregarProducto}
           onAct={handelActProducto}     

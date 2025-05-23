@@ -1,4 +1,4 @@
-import React,{ useCallback, useState,useMemo } from 'react';
+import React,{ useCallback, useState,useMemo, useEffect } from 'react';
 import ProductForm from './components/ProductForm';
 import ProductList from './components/ProductList';
 import SearchBar from './components/SearchBar';
@@ -9,6 +9,10 @@ function App() {
   const[productos, setProductos] = useState([]);
   const[editarProducto, setEditarProducto]=useState(null);
   const[buscar,setBuscar]=useState('');
+  
+  useEffect(()=>{
+    console.log("Productos actualiados: ", productos);
+  },[productos]);
   
   const handelAgregarProducto = useCallback((product)=>{
     setProductos(productos =>{

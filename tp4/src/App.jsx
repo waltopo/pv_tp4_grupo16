@@ -1,33 +1,45 @@
-import { useState } from 'react'
+import { useCallback, useState } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
+import ProductForm from './components/ProductForm';
 
 function App() {
-  const [count, setCount] = useState(0)
+
+  const[productos, setProductos] = useState([]);
+  const[editarProducto, setEditarProducto]=useState(null);
+
+
+  const handelAgregarProducto = useCallback((product)=>{
+    setProductos(productos =>{
+      const existe = productos.some(p=> p.id === product.id);
+      if(!existe){
+        return [...productos, product]
+      };
+      return productos;
+    });
+  },[]);
+
+  const handelActProducto = useCallback((productoAct)=>{
+    setProductos(productos=>
+      productos.map(p => (p.id === productoAct.id ? productoAct: p))
+      );
+  },[]);
+
+  const handleEditarProducto = useCallback((product) => {
+    setEditarProducto(product);
+  }, []);
 
   return (
     <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+      <div className="Contenedor">
+        <h1>Gestion de Productos</h1>
+        <ProductForm 
+        onAgregar={handelAgregarProducto}
+        onAct={handelActProducto}     
+        editarProducto={handleEditarProducto} 
+        />
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
     </>
   )
 }

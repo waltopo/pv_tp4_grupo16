@@ -5,8 +5,14 @@ import './App.css'
 
 function App() {
 
+  const[productos, setProductos] = useState([]);
+
   return (
     <>
+      <div>
+        <h1>Gestion de Productos</h1>
+        
+      </div>
     </>
   )
 }

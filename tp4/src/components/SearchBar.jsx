@@ -9,5 +9,4 @@ const SearchBar = ({ buscar, setBuscar }) => (
   </div>
 );
 
-
 export default SearchBar;

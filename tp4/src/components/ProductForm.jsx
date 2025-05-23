@@ -1,3 +1,4 @@
+import { useState } from "react";
 
 
 const crearProducto ={
@@ -7,3 +8,17 @@ const crearProducto ={
     descuento: 0,
     stock: 0
 };
+
+const ProductForm = ()=>{
+
+    const [producto, setProducto] = useState(crearProducto);        
+   
+    return(
+        <>
+        
+        </>
+    );
+    
+}
+
+export default ProductForm;

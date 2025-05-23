@@ -1,16 +1,14 @@
-import { useCallback, useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import React,{ useCallback, useState,useMemo } from 'react';
 import ProductForm from './components/ProductForm';
 import ProductList from './components/ProductList';
+import './App.css'
 
 function App() {
 
   const[productos, setProductos] = useState([]);
   const[editarProducto, setEditarProducto]=useState(null);
 
-
+  
   const handelAgregarProducto = useCallback((product)=>{
     setProductos(productos =>{
       const existe = productos.some(p=> p.id === product.id);
@@ -44,13 +42,12 @@ function App() {
   }, [productos, buscar]);
 
   return (
-    <>
       <div className="Contenedor">
         <h1>Gestion de Productos</h1>
         <ProductForm 
-        onAgregar={handelAgregarProducto}
-        onAct={handelActProducto}     
-        editarProducto={editarProducto} 
+          onAgregar={handelAgregarProducto}
+          onAct={handelActProducto}     
+          editarProducto={editarProducto} 
         />
         <ProductList
           productos={buscarProductos}
@@ -58,7 +55,6 @@ function App() {
           onEditar={handleEditarProducto}
         />
       </div>
-    </>
   )
 }
 

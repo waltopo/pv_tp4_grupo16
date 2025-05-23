@@ -19,7 +19,7 @@ const ProductForm = ({editarProducto, onAct, onAgregar})=>{
         }else{
             setProducto(crearProducto);
         }
-    });
+    }),[editarProducto];
     
     const handelChange = (e)=>{
         const {name, value} = e.target;

@@ -25,11 +25,10 @@ const ProductForm = ({editarProducto, onAct, onAgregar})=>{
         const {name, value} = e.target;
         setProducto(productos => ({
             ...productos,
-            [name]:name === 'descripcion' ? value : Number(value)
+            [name]:name === 'descripcion' ? value : Math.max(0, Number(value) || 0)
         }));
     };
-    
-    
+        
     const handelSubmit = (e)=>{
         e.preventDefault();
         const precioConDescuento = producto.precioUnitario * (1-producto.descuento/100);
@@ -42,9 +41,12 @@ const ProductForm = ({editarProducto, onAct, onAgregar})=>{
         };
         setProducto(crearProducto);
     };
-
+    const handleCancel = () => {
+        setProducto(crearProducto);
+        if (onAct) onAct(null); 
+    };
     return(
-        <form onSubmit={handelSubmit} >
+<form onSubmit={handelSubmit} >
 
             <div className="product-a">
 
@@ -59,9 +61,6 @@ const ProductForm = ({editarProducto, onAct, onAgregar})=>{
                 <label><h3>Descuento %:</h3> <input name="descuento" type="number" value={producto.descuento} onChange={handelChange} required/></label>
                 <label><h3>Stock:</h3> <input name="stock" type="number" value={producto.stock} onChange={handelChange} required/></label>
                 <button type="submit">{editarProducto ? 'Actualizar':'Agregar'}</button>
-
-            </div>
-
         </form>
 
 

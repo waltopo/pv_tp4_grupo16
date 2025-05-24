@@ -1,16 +1,19 @@
-import { useCallback, useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import React,{ useCallback, useState,useMemo, useEffect } from 'react';
 import ProductForm from './components/ProductForm';
 import ProductList from './components/ProductList';
+import SearchBar from './components/SearchBar';
+import './App.css'
 
 function App() {
 
   const[productos, setProductos] = useState([]);
   const[editarProducto, setEditarProducto]=useState(null);
-
-
+  const[buscar,setBuscar]=useState('');
+  
+  useEffect(()=>{
+    console.log("Productos actualiados: ", productos);
+  },[productos]);
+  
   const handelAgregarProducto = useCallback((product)=>{
     setProductos(productos =>{
       const existe = productos.some(p=> p.id === product.id);
@@ -25,6 +28,7 @@ function App() {
     setProductos(productos=>
       productos.map(p => (p.id === productoAct.id ? productoAct: p))
       );
+      setEditarProducto(null);
   },[]);
 
 
@@ -44,13 +48,13 @@ function App() {
   }, [productos, buscar]);
 
   return (
-    <>
       <div className="Contenedor">
         <h1>Gestion de Productos</h1>
+        <SearchBar buscar={buscar} setBuscar={setBuscar} />
         <ProductForm 
-        onAgregar={handelAgregarProducto}
-        onAct={handelActProducto}     
-        editarProducto={editarProducto} 
+          onAgregar={handelAgregarProducto}
+          onAct={handelActProducto}     
+          editarProducto={editarProducto} 
         />
         <ProductList
           productos={buscarProductos}
@@ -58,7 +62,6 @@ function App() {
           onEditar={handleEditarProducto}
         />
       </div>
-    </>
   )
 }
 

@@ -24,7 +24,7 @@ function App() {
     });
   },[]);
 
-  //actualizar un producto
+  //actualizar un productos
   const handelActProducto = useCallback((productoAct)=>{
     setProductos(productos=>
       productos.map(p => (p.id === productoAct.id ? productoAct: p))

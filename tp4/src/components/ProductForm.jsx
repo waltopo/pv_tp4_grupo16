@@ -46,19 +46,24 @@ const ProductForm = ({editarProducto, onAct, onAgregar})=>{
         if (onAct) onAct(null); 
     };
     return(
-        <form onSubmit={handelSubmit}>
-            <label>ID: <input name="id" type="number" value={producto.id} onChange={handelChange} required  min={0} disabled={!!editarProducto}/></label>
-            <label>Descripcion: <input name="descripcion" type="text" value={producto.descripcion} onChange={handelChange} required/></label>
-            <label>Precio: <input name="precioUnitario" type="number" value={producto.precioUnitario} onChange={handelChange} required min={0}/></label>
-            <label>Descuento %: <input name="descuento" type="number" value={producto.descuento} onChange={handelChange} required min={0}max={100}/></label>
-            <label>Stock: <input name="stock" type="number" value={producto.stock} onChange={handelChange} required min={0}/></label>
-            <button type="submit">{editarProducto ? 'Actualizar':'Agregar'}</button>
-             {editarProducto && (
-                <button type="button" onClick={handleCancel} style={{ marginLeft: 8 }}>
-                    Cancelar
-                </button>
-            )}
+<form onSubmit={handelSubmit} >
+
+            <div className="product-a">
+
+                <label><h3>ID : </h3> <input name="id" type="number" value={producto.id} onChange={handelChange} required/></label>
+                <label> <h3>Descripcion : </h3> <input name="descripcion" type="text" value={producto.descripcion} onChange={handelChange} required  /></label>
+
+            </div >
+            <br/>
+            <div className="product-form">
+
+                <label><h3>Precio:</h3> <input name="precioUnitario" type="number" value={producto.precioUnitario} onChange={handelChange} required/></label>
+                <label><h3>Descuento %:</h3> <input name="descuento" type="number" value={producto.descuento} onChange={handelChange} required/></label>
+                <label><h3>Stock:</h3> <input name="stock" type="number" value={producto.stock} onChange={handelChange} required/></label>
+                <button type="submit">{editarProducto ? 'Actualizar':'Agregar'}</button>
         </form>
+
+
     );
     
 }

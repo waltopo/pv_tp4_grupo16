@@ -40,3 +40,74 @@
 .read-the-docs {
   color: #888;
 }
+
+.product-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+  align-items: flex-start;
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+.product-form label {
+  color: white;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  font-weight: 500;
+}
+
+.product-form input {
+  margin-top: 0.3em;
+  padding: 0.5em;
+  font-size: 1em;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+}
+
+
+
+.product-a{
+  display: flex;
+  flex-direction: row;
+  gap: 1em;
+  align-items: flex-start;
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+.product-a label {
+  color: white;
+  display: flex;
+  width: 100%;
+  font-weight: 500;
+}
+
+.product-a input {
+  margin-top: 0.3em;
+  padding: 0.5em;
+  font-size: 1em;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+}
+
+
+.Search input {
+  margin-top: 0.3em;
+  padding: 0.5em;
+  font-size: 1em;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+}
+footer {
+  margin-top: 2em;
+  padding: 1em 0;
+  background: #22223b;
+  color: #f2e9e4;
+  font-size: 0.95em;
+  border-top: 2px solid #4a4e69;
+  text-align: center;
+  letter-spacing: 1px;
+  box-shadow: 0 -2px 8px rgba(0,0,0,0.1);
+}

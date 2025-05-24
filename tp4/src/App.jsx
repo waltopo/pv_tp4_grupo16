@@ -13,7 +13,7 @@ function App() {
   useEffect(()=>{
     console.log("Productos actualiados: ", productos);
   },[productos]);
-  
+  //agregar un producto
   const handelAgregarProducto = useCallback((product)=>{
     setProductos(productos =>{
       const existe = productos.some(p=> p.id === product.id);

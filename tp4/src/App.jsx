@@ -24,6 +24,7 @@ function App() {
     });
   },[]);
 
+  //actualizar un producto
   const handelActProducto = useCallback((productoAct)=>{
     setProductos(productos=>
       productos.map(p => (p.id === productoAct.id ? productoAct: p))
@@ -31,15 +32,15 @@ function App() {
       setEditarProducto(null);
   },[]);
 
-
+// seleccionar un producto para editar
   const handleEditarProducto = useCallback((product) => {
     setEditarProducto(product);
   }, []);
-
+// eliminar un producto
   const handleBorrarProducto = useCallback((id) => {
     setProductos(productos => productos.filter(p => p.id !== id));
   }, []);
-
+// filtra productos por busqueda
   const buscarProductos = useMemo(() => {
     return productos.filter(p =>
       p.descripcion.toLowerCase().includes(buscar.toLowerCase()) ||

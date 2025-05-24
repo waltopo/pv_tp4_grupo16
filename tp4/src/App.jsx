@@ -48,20 +48,26 @@ function App() {
   }, [productos, buscar]);
 
   return (
+
       <div className="Contenedor">
+
         <h1>Gestion de Productos</h1>
         <SearchBar buscar={buscar} setBuscar={setBuscar} />
-        <ProductForm 
+        <ProductForm
           onAgregar={handelAgregarProducto}
-          onAct={handelActProducto}     
-          editarProducto={editarProducto} 
+          onAct={handelActProducto}
+          editarProducto={editarProducto}
         />
         <ProductList
           productos={buscarProductos}
           onEliminar={handleBorrarProducto}
           onEditar={handleEditarProducto}
         />
+
+        <footer><h2> Grupo 16  - Trabajo Practico n° 4 </h2></footer>
+
       </div>
+
   )
 }
 

@@ -1,5 +1,5 @@
 const SearchBar = ({ buscar, setBuscar }) => (
-  <div className="Search">
+  <div className="Search" >
     <input
       type="text"
       placeholder="Buscar por ID o descripción"
